@@ -80,7 +80,7 @@ const Signup = () => {
               value={loginData.confirmPassword}
             />
           </label>
-          <button class="btn btn-primary">Sign Up</button>
+          <button className="btn btn-primary">Sign Up</button>
           <p>
             Already have an account?{" "}
             <Link className="text-blue-500" to="/login">
