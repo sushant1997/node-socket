@@ -1,9 +1,18 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { login } from "./store/slice/user/user.slice";
+import { loginUserThunk } from "./store/slice/user/user.thunk";
+
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </>
-  );
+  const { isAuthenticated } = useSelector((state) => state.userSlice);
+  console.log(isAuthenticated);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loginUserThunk());
+  });
+
+  return <></>;
 }
 
 export default App;
