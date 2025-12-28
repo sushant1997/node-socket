@@ -28,6 +28,7 @@ export const auth = {
                 sameSite: "None"
             })
             .json({
+                success: true,
                 newUser,
                 token
             })
@@ -41,7 +42,7 @@ export const auth = {
         password = await bcrypt.compare(password, user.password);
 
         if (!password) {
-            throw new ErrorHandler('Email or password incorrect.')
+            throw new ErrorHandler('Email or password incorrect.', 400)
         }
         let token = await jwtUtils.initJwt({ id: user._id, email: user.email });
 
@@ -53,7 +54,23 @@ export const auth = {
                 sameSite: "None"
             })
             .json({
+                success: true,
                 token
             })
+    },
+    me: async (req, res) => {
+        const user = req.user;
+        res.status(200).json({
+            success: true,
+            user
+        })
+    },
+    logout: async (req, res) => {
+        res.status(200).cookie("token", '', {
+            maxAge: 0
+        }).json({
+            success: true,
+            message: 'Logged out'
+        })
     }
 }
