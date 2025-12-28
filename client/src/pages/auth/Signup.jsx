@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Signup = () => {
   const [loginData, setLoginData] = useState({
-    fullName: "",
+    full_name: "",
     username: "",
     email: "",
     password: "",
@@ -41,9 +41,9 @@ const Signup = () => {
               type="text"
               className="grow"
               placeholder="Full Name"
-              name="fullName"
+              name="full_name"
               onChange={handleInputChange}
-              value={loginData.fullName}
+              value={loginData.full_name}
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
